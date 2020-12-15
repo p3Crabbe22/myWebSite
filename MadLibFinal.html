@@ -1,0 +1,88 @@
+<html>
+<head> 
+<script language="JavaScript">
+
+var partsOfSpeech = ["noun (place)", "plural noun (thing)", "adjective", "verb", "adjective", "adjective", "number", "verb (-ing)", "noun (thing/animal)", "verb (past tense)", "repeated plural noun (thing)"];
+var answers = new Array(partsOfSpeech.length);
+var story = [" is everyone's favorite place! There are so many things to do there. For example you're able to see a lot of ",". They are so "," and it's always fun to "," with them. But a lot of the time, they will get distracted staring at your "," face. You're just such a "," person to where it's hard for them to resist getting distracted. Anyways, it's not your fault, there's probably ","+ different ways for them to get distracted. For example when they are "," and some animal goes by grabbing their attention... One time a "," "," by and it distracted the "," so much that they all forgot what they were doing."];
+var count = 0;
+
+function prompt()
+{
+	// if this is the start, display the textbox and hide the story. 
+    document.getElementById("userEnter").style.visibility = "visible";
+
+    // then display the first element of partsOfSpeech in the textbox. 
+    document.getElementById("story").style.visibility = "hidden";
+    document.getElementById("response").value = partsOfSpeech[count];
+
+}
+
+
+function getWords()
+{
+    var wordBox = document.getElementById("response");
+    answers[count] = wordBox.value;
+    
+    count++; //increment count
+    
+    //test if there is another part of speech
+    if( count < partsOfSpeech.length )
+    {
+        prompt();//goes to prompt, runs through, then returns to this function
+    }
+    else //all elements have been added. Time to display the story.
+    {
+        count = 0; //reset so can play again 
+        document.getElementById("story").innerHTML = displayStory(); //replace Latin, or text that will display on page with text that has been stitched together
+        
+    }
+}
+
+function displayStory()
+{
+	var answer = "";
+	var i;//iterator, iterations again and again
+	
+	// loop to stitch elements of the story with elements of answers. 
+	
+	for ( i = 0; i < 11; i++)
+	{
+        answer = answer + answers[i];
+        answer = answer + story[i];
+	}
+    
+    
+	// Make the story div visible, and the userEnter div hidden.		
+    document.getElementById("userEnter").style.visibility = "hidden";
+    document.getElementById("story").style.visibility = "visible";
+    return answer; //way of passing information back, going to display answer/picture on webpage OR it is answering a question
+    //a return passes back ONE piece of data
+    //PARAMETERS: the extra information needed for a function to do its job. alert("hello") is a function that needs parameters. The alert function won't work without the information that we want to alert. setTimeout needs a function and delay (in millis) before the call is made.
+    //LOOP ELEMENTS: three elements, a variable set to a starting point, a condition, and a change to that variable. see for loop above.
+    
+}
+
+</script>
+</head>
+<body bgcolor="yellow" link="pink">
+<font color="black">
+<center> 
+<h1>My MadLib!</h1>
+    <center>
+     <a href="index.html">Return to HOMEPAGE </a>
+        <br/>
+        <br/>
+<input id="daButton" type="button" value="start" onClick="prompt()"/>
+</center>
+<div id="userEnter" style="position:absolute; left:200; top: 100; visibility:hidden;">
+<input type = "text" id="response" value="" onfocusout="getWords()"/>
+</div>
+
+<div id="story" style="position:absolute; overflow:scroll; top:300; left:200; width:400; height: 200; visibility:hidden">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+</div> 
+</center>    
+</font>
+</body>
+</html>
