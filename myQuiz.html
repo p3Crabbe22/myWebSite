@@ -2,19 +2,6 @@
 <head> 
 <script language="JavaScript">
 
-/*************** Algorithm ******************
-1.
-2.
-3.
-4.
-5. 
-6.
-7.
-8 
-
-*/
-
-
 var questions = ["Who is on the 100 dollar bill?", "Who won Superbowl 50?", "What is the biggest planet in the Solar System?", "Where is Mt. Everest located?", "Which element has the atomic number of 1?", "How many weeks are in a year?", "Where were the olympics in 2000?", "What is the biggest continent?", "How old is Kris Jenner?", "What is the biggest book in the Bible?"];
 // Create an array of 10ish questions.
 
@@ -25,10 +12,6 @@ var index = -1;
 
 var score = 0;
 
-
-// Create code in displayQuestion that will display the contents of the questions array, one 
-// element at a time. After the last element is displayed, the program should display the first
-// element again.
 function displayQuestion()
 {
     index = index +1
@@ -39,9 +22,7 @@ function displayQuestion()
     var answer = document.getElementById("question");
     answer.value = questions[index];
 }
-
-
-// This function will first acquire the user's answer (from the textbox with the ID "answer". Then this function will pass that to the checkAnswer function (note: that there is a parameter.) The checkAnswer will return a true or a false. If that function returns true, then the score variable will increase by 1, and an alert should pop up saying "Correct" or something positive. If the checkAnswer function comes back false, then score doesn't increase but an alert should announce "incorect." or something similar. 
+ 
 function updateScore()
 {
 	var answerT = document.getElementById("answer");
@@ -54,12 +35,9 @@ function updateScore()
     else if( daAnswer == false )
         {
             alert("Sorry, but the actual answer is " +answers[index]);
-        }
-            
-        
+        }       
 }
 
-// This function takes a parameter which will be the users answer. If what the user has submitted the correct answer, this method should return true. Otherwise it should return false. 
 function checkAnswer(ans)
 {
     var answer = -1;
@@ -74,8 +52,6 @@ function checkAnswer(ans)
     return answer;
         
 }
-
-
 
 </script>
 </head>
@@ -108,7 +84,6 @@ function checkAnswer(ans)
 </table>
 <br/><br/>
 <input type="button" value="Next Question" onclick="displayQuestion()"/>
-
 
 </center>
 </body>
