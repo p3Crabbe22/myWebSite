@@ -1,0 +1,86 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+
+// Two dimen
+var ToDo =[
+			   ["make bed", "9:00 am"],
+			   ["walk dog", "11:00 am"],
+			   ["clean kitchen", "12:00 pm"],
+			   ["take sister to dentist", "3:00 pm"]  
+	   ];
+				   
+		
+var listNum = -1;
+var score = 0
+
+function showChore()
+{
+	listNum++
+	if( listNum == ToDo.length)
+	{
+		listNum = 0;
+	}
+
+	document.getElementById("type").value = ToDo[listNum][0];
+	document.getElementById("item").value = ToDo[listNum][1];
+}
+
+
+function addChore()
+{
+	var activity = prompt("What do you have to do?");
+	var time = prompt("At what time?");
+
+	var temp = [activity, time];
+
+	ToDo.push(temp);
+	
+}
+
+
+function displayList()
+{
+	var answer = ""
+	for (var i = 0;i < ToDo.length; i++)
+	{ 
+		answer = answer + ToDo[i][1] + " - ";
+        answer = answer + ToDo[i][0];
+		answer = answer + "<br/>";
+	}
+    
+	document.getElementById("list").innerHTML = answer;
+	document.getElementById("list").style.visibility = "visible";
+    return answer;
+}
+
+
+
+</script>
+</head>
+<body bgcolor="pink" > 
+<center>
+<h1> To-Do List</h1>
+
+    Write a list of the things you have to do today! Click "Add Activity," and then fill in the prompts in chronological order! When you've added everything, click "Show List."
+
+<br/>
+<br/>
+
+<input type="button" value = "Next" onclick="showChore()"/>
+<br/><br/>
+<input type="text" id="type" size="50">  <input type="text" id="item" size="50">
+<br/><br/>
+<input type="button" value = "Add an item" onclick="addChore()"/>
+<input type="button" value = "See To-Do List" onclick="displayList()"/>
+<div id = "list" style = "position:absolute; overflow:scroll; top:300; left:450; width:400; height:200; visibility:hidden">
+<br/><br/>
+
+</center>
+
+
+</body>
+</html>
+
+
